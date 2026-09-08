@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "4MMLNT392D.in.okjo.tokyotrip",
+        "paths": [
+          "/japan_trip_site/join",
+          "/japan_trip_site/join/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "4MMLNT392D.in.okjo.tokyotrip"
+        ],
+        "components": [
+          { "/": "/japan_trip_site/join" },
+          { "/": "/japan_trip_site/join/*" }
+        ]
+      }
+    ]
+  }
+}

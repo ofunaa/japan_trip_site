@@ -17,6 +17,14 @@
     content="This is the official support page for the Japan Trip Go app. We provide information about supported languages and frequently asked questions (FAQ).">
   <meta itemprop="url" content="https://ofunaa.github.io/japan_trip_site">
   <title>Japan Trip Go</title>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('join') || params.get('code')) {
+        window.location.replace('join/' + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
   <style>
     * {
       margin: 0;
