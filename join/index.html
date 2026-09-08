@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12372a">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Join a shared Japan trip in Japan Trip GO.">
+  <meta property="og:title" content="Join my Japan trip — Japan Trip GO">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ofunaa.github.io/japan_trip_site/join/">
+  <meta property="og:description" content="Open Japan Trip GO to join this shared itinerary.">
+  <title>Join trip — Japan Trip GO</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: #12372a;
+      background: #f7f4ec;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(18, 55, 42, .18);
+    }
+    .brand { font-weight: 700; text-decoration: none; }
+    .brand strong { color: #ff765e; }
+    .hero {
+      padding: 48px 20px 36px;
+      color: #f7f4ec;
+      background: #12372a;
+    }
+    .hero p { margin: 0 0 16px; opacity: .8; }
+    .hero h1 { margin: 0; font-size: 42px; line-height: 1.1; }
+    .hero em { color: #ff765e; font-style: italic; }
+    .card {
+      margin: 28px 20px;
+      padding: 28px 24px;
+      border: 1px solid #12372a;
+      border-radius: 24px;
+      background: #f1e3c2;
+    }
+    .code {
+      margin: 8px 0 24px;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: .18em;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #12372a;
+      color: #f7f4ec;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .stores { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .stores a { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="../">Japan Trip <strong>GO</strong></a>
+    <a href="https://apps.apple.com/in/app/japan-trip-go/id6747436071">Get the app</a>
+  </header>
+  <section class="hero">
+    <p>SHARED TRIP</p>
+    <h1>Join this<br><em>Japan trip.</em></h1>
+    <p>If Japan Trip GO is already installed, open the app. If not, download it and enter the invite code.</p>
+  </section>
+  <section class="card" id="join-ready" hidden>
+    <p>INVITE CODE</p>
+    <p class="code" id="join-code"></p>
+    <a class="button" id="open-app" href="#">Open Japan Trip GO</a>
+    <div class="stores">
+      <a href="https://apps.apple.com/in/app/japan-trip-go/id6747436071" target="_blank" rel="noopener">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=in.okjo.tokyotrip" target="_blank" rel="noopener">Google Play</a>
+    </div>
+  </section>
+  <section class="card" id="join-missing" hidden>
+    <p>INVITE LINK</p>
+    <h2>This invite link is missing a code.</h2>
+    <p>Ask your friend to send the invite again from Japan Trip GO.</p>
+    <a class="button" href="../">Back to Japan Trip GO</a>
+  </section>
+  <script>
+    (function () {
+      var alphabet = /^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{6}$/;
+      var params = new URLSearchParams(window.location.search);
+      var raw = (params.get('join') || params.get('code') || '').toUpperCase().replace(/[\s-]/g, '');
+      var ready = document.getElementById('join-ready');
+      var missing = document.getElementById('join-missing');
+      var codeEl = document.getElementById('join-code');
+      var openApp = document.getElementById('open-app');
+      if (!alphabet.test(raw)) {
+        missing.hidden = false;
+        return;
+      }
+      ready.hidden = false;
+      codeEl.textContent = raw;
+      openApp.href = 'japantripgo://join?code=' + encodeURIComponent(raw);
+    })();
+  </script>
+</body>
+</html>

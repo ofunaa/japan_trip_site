@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "in.okjo.tokyotrip",
+      "sha256_cert_fingerprints": [
+        "D9:17:C3:A3:02:30:AF:DA:A9:6C:70:60:6F:40:37:78:92:D9:C0:95:5A:51:5D:25:22:27:AE:16:1B:4D:74:B9"
+      ]
+    }
+  }
+]
